@@ -7,13 +7,15 @@ import java.util.ArrayList;
 
 public class SourceReader extends pmp.filter.Source<ArrayList<String>> {
 
+    public static final String INPUTFILE = "Inputfiles\\aliceInWonderland.txt";
+
     public SourceReader(Writeable<ArrayList<String>> output) {
         super(output);
     }
 
     @Override
     public ArrayList<String> read() throws StreamCorruptedException {
-        return readSourceFile("Inputfiles\\aliceInWonderland.txt");
+        return readSourceFile(INPUTFILE);
     }
 
     public ArrayList<String> readSourceFile(String filePath) {
@@ -21,7 +23,7 @@ public class SourceReader extends pmp.filter.Source<ArrayList<String>> {
         File file = new File(filePath);
 
         if (!file.canRead() || !file.isFile()) {
-            //TODO: Fehlerbehandlung
+            System.exit(-1);
         }
 
         ArrayList<String> allLines = new ArrayList<String>();
