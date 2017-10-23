@@ -55,11 +55,11 @@ public abstract class Source<T> implements Readable<T>, Runnable{
             do {
                 if (m_Output == null)
                     throw new StreamCorruptedException("output filter is null");
-                
+
                 output = read();
                 m_Output.write(output);
-                
-            } while(output != null);
+
+            } while (output != null);
             epilogue();
 
         } catch (StreamCorruptedException e) {
@@ -67,6 +67,4 @@ public abstract class Source<T> implements Readable<T>, Runnable{
             e.printStackTrace();
         }
     }
-	
-    
 }
