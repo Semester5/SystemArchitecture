@@ -1,11 +1,12 @@
 package indsys;
 
+import pmp.filter.Source;
 import pmp.interfaces.Writeable;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class SourceReader extends pmp.filter.Source<ArrayList<String>> {
+public class SourceReader extends Source<ArrayList<String>> {
 
     public static final String INPUTFILE = "Inputfiles\\aliceInWonderland.txt";
 
