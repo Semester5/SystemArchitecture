@@ -9,11 +9,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-
-        SimplePipe<ArrayList<String>> simplePipe = new SimplePipe(new SequenceWordsFilter(new SimplePipe<SimplePipe<ArrayList<String>>>(new CircularShiftFilter())));
-        SourceReader sourceReader = new SourceReader(simplePipe);
-        sourceReader.run();
-
-
+        //SourceReader sourceReader = new SourceReader(new SimplePipe(new SequenceWordsFilter(new SimplePipe<SimplePipe<ArrayList<String>>>(new CircularShiftFilter()))));
+        //sourceReader.run();
     }
 }

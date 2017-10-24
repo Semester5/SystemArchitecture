@@ -6,24 +6,29 @@ import pmp.interfaces.Writeable;
 import pmp.pipes.SimplePipe;
 
 import java.io.StreamCorruptedException;
+import java.lang.reflect.Array;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
-public class SequenceWordsFilter extends AbstractFilter<ArrayList<String>, SimplePipe<ArrayList<String>>> {
+public class SequenceWordsFilter extends AbstractFilter<ArrayList<String>, ArrayList<Sequence>> {
 
-    public SequenceWordsFilter(Writeable<SimplePipe<ArrayList<String>>> output) throws InvalidParameterException {
+    public SequenceWordsFilter(Writeable<ArrayList<Sequence>> output) throws InvalidParameterException {
         super(output);
     }
 
     @Override
-    public SimplePipe<ArrayList<String>> read() throws StreamCorruptedException {
+    public ArrayList<Sequence> read() throws StreamCorruptedException {
         return null;
     }
 
     @Override
     public void write(ArrayList<String> lines) throws StreamCorruptedException {
-        for(String line : lines) {
+        ArrayList<Sequence> sequences = new ArrayList<Sequence>();
 
+        for(int i = 1; i <= lines.size(); i++) {
+            Sequence sequence = new Sequence(i, lines.get(i));
+            sequences.add(sequence);
         }
+        writeOutput(sequences);
     }
 }
