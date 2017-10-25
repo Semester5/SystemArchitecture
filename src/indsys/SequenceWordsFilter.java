@@ -23,11 +23,13 @@ public class SequenceWordsFilter extends AbstractFilter<ArrayList<String>, Array
 
     @Override
     public void write(ArrayList<String> lines) throws StreamCorruptedException {
-        ArrayList<Sequence> sequences = new ArrayList<Sequence>();
+        ArrayList<Sequence> sequences = new ArrayList<>();
 
         for(int i = 0; i < lines.size(); i++) {
             Sequence sequence = new Sequence(i+1, lines.get(i));
-            sequences.add(sequence);
+            if(sequence.getSequenceWords().size() > 0) {
+                sequences.add(sequence);
+            }
         }
         writeOutput(sequences);
     }

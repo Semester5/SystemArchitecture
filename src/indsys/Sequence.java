@@ -23,7 +23,9 @@ public class Sequence {
             if (Character.isLetter(c) || Character.isDigit(c)) {
                 word += c;
             } else {
-                sequenceWords.add(word);
+                if(!word.equals("")) {
+                    sequenceWords.add(word);
+                }
                 word = "";
             }
         }
