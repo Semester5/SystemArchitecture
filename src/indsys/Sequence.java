@@ -60,7 +60,7 @@ public class Sequence {
     public int compareSeq(Sequence o2) {
         String line1 = getLineAsString(this.getSequenceWords());
         String line2 = getLineAsString(o2.getSequenceWords());
-        return line1.compareTo(line2);
+        return line1.compareToIgnoreCase(line2);
     }
 
     private String getLineAsString(LinkedList<String> sequenceWords) {

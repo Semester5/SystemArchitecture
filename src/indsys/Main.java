@@ -19,7 +19,9 @@ public class Main {
                                                 new SimplePipe(
                                                         (Writeable) new FrequentWordFilter(
                                                                 new SimplePipe(
-                                                                    new SinkWriter()))))))));
+                                                                        (Writeable) new SortAlphabeticalFilter(
+                                                                                new SimplePipe(
+                                                                                    new SinkWriter()))))))))));
         sourceReader.run();
     }
 }
