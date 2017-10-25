@@ -1,6 +1,7 @@
 package indsys;
 
 import pmp.filter.Sink;
+import pmp.interfaces.Writeable;
 import pmp.pipes.SimplePipe;
 
 import java.io.FileNotFoundException;
@@ -12,10 +13,11 @@ public class Main {
     public static void main(String[] args) {
         SourceReader sourceReader = new SourceReader(
                 new SimplePipe(
-                        new SequenceWordsFilter(
+                        (Writeable) new SequenceWordsFilter(
                                 new SimplePipe(
-                                        new CircularShiftFilter(
-                                                new SimplePipe(new SinkWriter()))))));
+                                        (Writeable) new CircularShiftFilter(
+                                                new SimplePipe(
+                                                        new SinkWriter()))))));
         sourceReader.run();
     }
 }

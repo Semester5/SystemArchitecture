@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class SinkWriter extends Sink<ArrayList<Sequence>> implements Writeable<ArrayList<Sequence>> {
 
     public SinkWriter() {
-
+        super();
     }
 
     @Override
