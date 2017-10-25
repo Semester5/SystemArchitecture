@@ -20,10 +20,10 @@ public class Sequence {
     private void changeLineToSequenceWords(String line) {
         String word = "";
         for(char c : line.toCharArray()) {
-            if (Character.isLetter(c) || Character.isDigit(c)) {
+            if (c != ' ') {
                 word += c;
             } else {
-                if(!word.equals("")) {
+                if(!word.equals("") && !word.equals(" ")) {
                     sequenceWords.add(word);
                 }
                 word = "";
@@ -48,7 +48,7 @@ public class Sequence {
     }
 
     public Sequence shift() {
-        LinkedList<String> shiftedLine = new LinkedList<>(sequenceWords);
+        LinkedList<String> shiftedLine = new LinkedList<String>(sequenceWords);
         String firstWord = shiftedLine.removeFirst();
         shiftedLine.addLast((firstWord));
         return new Sequence(this.lineNumber, shiftedLine);

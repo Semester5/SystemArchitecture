@@ -16,24 +16,20 @@ public class SourceReader extends Source<ArrayList<String>> {
 
     @Override
     public ArrayList<String> read() throws StreamCorruptedException {
-        return readSourceFile(INPUTFILE);
-    }
-
-    public ArrayList<String> readSourceFile(String filePath) {
-
-        File file = new File(filePath);
+        File file = new File(INPUTFILE);
 
         if (!file.canRead() || !file.isFile()) {
             System.exit(-1);
         }
 
-        ArrayList<String> allLines = new ArrayList<String>();
+        ArrayList<String> allLinesOfSource = new ArrayList<String>();
         BufferedReader bufferedReader = null;
         try {
-            bufferedReader = new BufferedReader(new FileReader(filePath));
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null) {
-                allLines.add(line);
+            bufferedReader = new BufferedReader(new FileReader(INPUTFILE));
+            String lineOfSource = null;
+
+            while ((lineOfSource = bufferedReader.readLine()) != null) {
+                allLinesOfSource.add(lineOfSource);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,8 +38,9 @@ public class SourceReader extends Source<ArrayList<String>> {
                 try {
                     bufferedReader.close();
                 } catch (IOException e) {
+                    e.printStackTrace();
                 }
         }
-        return allLines;
+        return allLinesOfSource;
     }
 }
