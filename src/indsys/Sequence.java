@@ -48,7 +48,7 @@ public class Sequence {
     }
 
     public Sequence shift() {
-        LinkedList<String> shiftedLine = new LinkedList<>();
+        LinkedList<String> shiftedLine = new LinkedList<>(sequenceWords);
         String firstWord = shiftedLine.removeFirst();
         shiftedLine.addLast((firstWord));
         return new Sequence(this.lineNumber, shiftedLine);

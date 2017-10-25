@@ -25,8 +25,8 @@ public class SequenceWordsFilter extends AbstractFilter<ArrayList<String>, Array
     public void write(ArrayList<String> lines) throws StreamCorruptedException {
         ArrayList<Sequence> sequences = new ArrayList<Sequence>();
 
-        for(int i = 1; i <= lines.size(); i++) {
-            Sequence sequence = new Sequence(i, lines.get(i));
+        for(int i = 0; i < lines.size(); i++) {
+            Sequence sequence = new Sequence(i+1, lines.get(i));
             sequences.add(sequence);
         }
         writeOutput(sequences);
