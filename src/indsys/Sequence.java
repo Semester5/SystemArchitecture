@@ -53,4 +53,10 @@ public class Sequence {
         shiftedLine.addLast((firstWord));
         return new Sequence(this.lineNumber, shiftedLine);
     }
+
+    public int compareSeq(Sequence o2) {
+        String line1 = this.getSequenceWords().toString();
+        String line2 = o2.getSequenceWords().toString();
+        return line1.compareTo(line2);
+    }
 }
