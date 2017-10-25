@@ -29,6 +29,9 @@ public class Sequence {
                 word = "";
             }
         }
+        if(word != "") {
+            sequenceWords.add(word);
+        }
     }
 
     public int getLineNumber() {

@@ -16,7 +16,12 @@ public class SourceReader extends Source<ArrayList<String>> {
 
     @Override
     public ArrayList<String> read() throws StreamCorruptedException {
+        if(ENDING_SIGNAL != null && ENDING_SIGNAL.equals(1)) {
+            return null;
+        }
+
         File file = new File(INPUTFILE);
+
 
         if (!file.canRead() || !file.isFile()) {
             System.exit(-1);
@@ -31,6 +36,7 @@ public class SourceReader extends Source<ArrayList<String>> {
             while ((lineOfSource = bufferedReader.readLine()) != null) {
                 allLinesOfSource.add(lineOfSource);
             }
+            ENDING_SIGNAL = 1;
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
