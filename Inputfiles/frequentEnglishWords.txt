@@ -1,4 +1,3 @@
-Word	Frequency	Type
 	the	9243		(definite article,adverb)
 	of	5220		(preposition,auxiliary verb)
 	and	5196		(conjunction)
