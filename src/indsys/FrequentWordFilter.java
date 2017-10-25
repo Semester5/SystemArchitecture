@@ -6,11 +6,12 @@ import pmp.interfaces.Writeable;
 import java.io.*;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class FrequentWordFilter extends AbstractFilter<ArrayList<Sequence>, ArrayList<Sequence>> {
 
     public static final String INPUTFILE = "Inputfiles\\frequentEnglishWords.txt";
-    private ArrayList<String> frequentWords = new ArrayList<>();
+    private ArrayList<String> frequentWords = new ArrayList<String>();
 
     public FrequentWordFilter(Writeable<ArrayList<Sequence>> output) throws InvalidParameterException {
         super(output);
@@ -57,7 +58,6 @@ public class FrequentWordFilter extends AbstractFilter<ArrayList<Sequence>, Arra
         this.frequentWords = freqWords;
     }
 
-
     @Override
     public ArrayList<Sequence> read() throws StreamCorruptedException {
         return null;
@@ -65,13 +65,13 @@ public class FrequentWordFilter extends AbstractFilter<ArrayList<Sequence>, Arra
 
     @Override
     public void write(ArrayList<Sequence> sequences) throws StreamCorruptedException {
-        ArrayList<Sequence> newSeq = sequences;
-        for (Sequence sequence : newSeq ) {
-            String word = sequence.getSequenceWords().getFirst();
+        Iterator<Sequence> iter = sequences.iterator();
+        while (iter.hasNext()) {
+            String word = iter.next().getSequenceWords().getFirst();
             if(frequentWords.contains(word)) {
-                newSeq.remove(sequence);
+                iter.remove();
             }
         }
-        writeOutput(newSeq);
+        writeOutput(sequences);
     }
 }

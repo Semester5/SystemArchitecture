@@ -17,7 +17,9 @@ public class Main {
                                 new SimplePipe(
                                         (Writeable) new CircularShiftFilter(
                                                 new SimplePipe(
-                                                        new SinkWriter()))))));
+                                                        (Writeable) new FrequentWordFilter(
+                                                                new SimplePipe(
+                                                                    new SinkWriter()))))))));
         sourceReader.run();
     }
 }
