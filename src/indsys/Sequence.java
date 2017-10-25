@@ -1,6 +1,4 @@
 package indsys;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Sequence {
@@ -55,8 +53,16 @@ public class Sequence {
     }
 
     public int compareSeq(Sequence o2) {
-        String line1 = this.getSequenceWords().toString();
-        String line2 = o2.getSequenceWords().toString();
+        String line1 = getLineAsString(this.getSequenceWords());
+        String line2 = getLineAsString(o2.getSequenceWords());
         return line1.compareTo(line2);
+    }
+
+    private String getLineAsString(LinkedList<String> sequenceWords) {
+        StringBuilder sb = new StringBuilder();
+        for(String word : sequenceWords) {
+            sb.append(word);
+        }
+        return sb.toString();
     }
 }
