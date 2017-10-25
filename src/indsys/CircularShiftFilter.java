@@ -2,7 +2,6 @@ package indsys;
 
 import pmp.filter.AbstractFilter;
 import pmp.interfaces.Writeable;
-import pmp.pipes.SimplePipe;
 
 import java.io.StreamCorruptedException;
 import java.security.InvalidParameterException;

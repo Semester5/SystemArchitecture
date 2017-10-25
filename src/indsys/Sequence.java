@@ -20,16 +20,20 @@ public class Sequence {
     private void changeLineToSequenceWords(String line) {
         String word = "";
         for(char c : line.toCharArray()) {
-            if (c != ' ') {
+            if (c != ' ' && c != '\uFEFF') {
                 word += c;
             } else {
+                word = word.replaceAll(" ", "");
+                word = word.replaceAll("[^A-Za-z]+", "");
                 if(!word.equals("") && !word.equals(" ")) {
                     sequenceWords.add(word);
                 }
                 word = "";
             }
         }
-        if(word != "") {
+        word = word.replaceAll(" ", "");
+        word = word.replaceAll("[^A-Za-z]+", "");
+        if(!word.equals("") && !word.equals(" ")) {
             sequenceWords.add(word);
         }
     }
@@ -70,4 +74,5 @@ public class Sequence {
         }
         return sb.toString();
     }
+
 }

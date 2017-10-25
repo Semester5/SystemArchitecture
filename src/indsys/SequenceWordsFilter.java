@@ -31,6 +31,7 @@ public class SequenceWordsFilter extends AbstractFilter<ArrayList<String>, Array
                 sequences.add(sequence);
             }
         }
+
         writeOutput(sequences);
     }
 }

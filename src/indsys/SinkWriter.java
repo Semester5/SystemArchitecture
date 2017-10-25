@@ -26,7 +26,7 @@ public class SinkWriter extends Sink<ArrayList<Sequence>> implements Writeable<A
                 for(String word : sequence.getSequenceWords()) {
                     sinkWriter.write(word + " ");
                 }
-                sinkWriter.write("\tLinenumber: " + sequence.getLineNumber() + System.lineSeparator());
+                sinkWriter.write("\t Linenumber: " + sequence.getLineNumber() + System.lineSeparator());
             }
 
         } catch (IOException ex) {
