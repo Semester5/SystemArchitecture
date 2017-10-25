@@ -6,11 +6,7 @@ import pmp.interfaces.Writeable;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 
-public class SinkWriter extends Sink<ArrayList<Sequence>> implements Writeable<ArrayList<Sequence>> {
-
-    public SinkWriter() {
-
-    }
+public class SinkWriter extends Sink<ArrayList<Sequence>> {
 
     @Override
     public void write(ArrayList<Sequence> sequences) throws StreamCorruptedException {

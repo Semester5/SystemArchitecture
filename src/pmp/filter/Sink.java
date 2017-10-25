@@ -19,18 +19,17 @@ public class Sink<T> implements Writeable<T>, Runnable{
     protected Readable<T> m_Input = null;
     
     public static Object ENDING_SIGNAL = null;
-    
-    
+
+    public Sink()  {
+    }
+
     public Sink(Readable<T> input) throws InvalidParameterException{
         if (input == null){
             throw new InvalidParameterException("input filter can't be null!");
         }
         m_Input = input;
     }
-    
-    public Sink()  {
-    	
-    }
+
 
 /*
  * push next value into sink

@@ -9,6 +9,7 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 public class CircularShiftFilter extends AbstractFilter<ArrayList<Sequence>, ArrayList<Sequence>> {
+
     public CircularShiftFilter(Writeable<ArrayList<Sequence>> output) throws InvalidParameterException {
         super(output);
     }
