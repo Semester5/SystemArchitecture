@@ -20,15 +20,15 @@ public class CircularShiftFilter extends AbstractFilter<ArrayList<Sequence>, Arr
 
     @Override
     public void write(ArrayList<Sequence> sequences) throws StreamCorruptedException {
-        ArrayList<Sequence> shiftedSecuences = new ArrayList<Sequence>();
+        ArrayList<Sequence> shiftedSequences = new ArrayList<Sequence>();
         for(Sequence sequence : sequences) {
             Sequence newSeq = sequence;
             for(int i = 0; i< sequence.getSequenceWords().size(); i++) {
                 newSeq = newSeq.shift();
-                shiftedSecuences.add(newSeq);
+                shiftedSequences.add(newSeq);
             }
         }
-        sequences.addAll(shiftedSecuences);
+        sequences.addAll(shiftedSequences);
         writeOutput(sequences);
     }
 }

@@ -71,6 +71,4 @@ public class Sink<T> implements Writeable<T>, Runnable{
             e.printStackTrace();
         }
     }
-	
-    
 }
