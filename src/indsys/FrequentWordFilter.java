@@ -13,7 +13,7 @@ public class FrequentWordFilter extends AbstractFilter<ArrayList<Sequence>, Arra
     public static final String INPUTFILE = "Inputfiles\\frequentEnglishWords.txt";
     public static final int FREQUENT_WORDS_LINENUMBER = 60;
 
-    private ArrayList<String> frequentWords = new ArrayList<String>();
+    private ArrayList<String> frequentWordsInLowerCase = new ArrayList<String>();
 
     public FrequentWordFilter(Writeable<ArrayList<Sequence>> output) throws InvalidParameterException {
         super(output);
@@ -54,9 +54,9 @@ public class FrequentWordFilter extends AbstractFilter<ArrayList<Sequence>, Arra
         ArrayList<String> freqWords = new ArrayList<>();
         for(String line : allLines) {
             String[] split = line.split("\t");
-            freqWords.add(split[1]);
+            freqWords.add(split[1].toLowerCase());
         }
-        this.frequentWords = freqWords;
+        this.frequentWordsInLowerCase = freqWords;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class FrequentWordFilter extends AbstractFilter<ArrayList<Sequence>, Arra
         Iterator<Sequence> iter = sequences.iterator();
         while (iter.hasNext()) {
             String word = iter.next().getSequenceWords().getFirst();
-            if(frequentWords.contains(word)) {
+            if(frequentWordsInLowerCase.contains(word.toLowerCase())) {
                 iter.remove();
             }
         }
