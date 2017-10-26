@@ -45,7 +45,7 @@ public class Main {
 
                     System.out.print("Bitte geben Sie eine Formatierung an: [l]...Linksbündig, [z]...zentriert, [r]...rechtsbündig: ");
                     br = new BufferedReader(new InputStreamReader(System.in));
-                    formatmode = br.readLine();
+                    formatmode = br.readLine().toLowerCase();
 
                     if("l".equals(formatmode) || "z".equals(formatmode) || "r".equals(formatmode)) {
 
