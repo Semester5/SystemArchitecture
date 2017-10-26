@@ -26,7 +26,8 @@ public class SequenceWordsFilter extends AbstractFilter<ArrayList<String>, Array
         ArrayList<Sequence> sequences = new ArrayList<Sequence>();
 
         for(int i = 0; i < lines.size(); i++) {
-            Sequence sequence = new Sequence(i+1, lines.get(i));
+            Object line = lines.get(i);
+            Sequence sequence = new Sequence(i+1, (String) line);
             if(sequence.getSequenceWords().size() > 0) {
                 sequences.add(sequence);
             }

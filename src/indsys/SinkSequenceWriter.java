@@ -30,7 +30,6 @@ public class SinkSequenceWriter extends Sink<ArrayList<Sequence>> implements Wri
                 }
                 sinkWriter.write(sequence.getLineNumber() + System.lineSeparator());
             }
-
         } catch (IOException ex) {
             // report
         } finally {

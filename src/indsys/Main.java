@@ -45,8 +45,10 @@ public class Main {
                     characterlength = Integer.parseInt(br.readLine());
 
                     System.out.print("Bitte geben Sie eine Formatierung an: [l]...Linksbündig, [z]...zentriert, [r]...rechtsbündig: ");
-                    br = new BufferedReader(new InputStreamReader(System.in));
                     formatmode = br.readLine().toLowerCase();
+                } catch(Exception e){
+                    System.err.println(e.toString());
+                }
 
                     if("l".equals(formatmode) || "z".equals(formatmode) || "r".equals(formatmode)) {
 
@@ -68,10 +70,10 @@ public class Main {
                                                                                                                                         (Writeable) new SortAlphabeticalFilter(
                                                                                                                                                 new SimplePipe(
                                                                                                                                                         new SinkSequenceWriter()))))))))), characterlength, formatmode)), characterlength)))));
+                        sourceReader.run();
                         return;
                     }
-                } catch(Exception e){
-                }
+
             }
         }
     }
