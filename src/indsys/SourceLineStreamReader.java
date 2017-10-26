@@ -6,22 +6,22 @@ import pmp.interfaces.Writeable;
 import java.io.*;
 import java.util.ArrayList;
 
-public class SourceReader extends Source<ArrayList<String>> {
+public class SourceLineReader extends Source<ArrayList<String>> {
 
     public static final String INPUTFILE = "Inputfiles\\aliceInWonderland.txt";
 
-    public SourceReader(Writeable<ArrayList<String>> output) {
+    public SourceLineReader(Writeable<ArrayList<String>> output) {
         super(output);
     }
 
     @Override
+    //Reads all full lines of an Inputfile
     public ArrayList<String> read() throws StreamCorruptedException {
         if(ENDING_SIGNAL != null && ENDING_SIGNAL.equals(1)) {
             return null;
         }
 
         File file = new File(INPUTFILE);
-
 
         if (!file.canRead() || !file.isFile()) {
             System.exit(-1);
