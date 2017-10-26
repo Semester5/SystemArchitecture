@@ -1,6 +1,7 @@
 package indsys;
 
 import pmp.interfaces.Writeable;
+import pmp.pipes.DoubleExitPushPipe;
 import pmp.pipes.SimplePipe;
 
 import java.io.*;
@@ -31,7 +32,7 @@ public class Main {
                                                                         new SimplePipe(
                                                                                 (Writeable) new SortAlphabeticalFilter(
                                                                                         new SimplePipe(
-                                                                                                new SinkWriter()))))))))));
+                                                                                                new SinkSequenceWriter()))))))))));
                 sourceReader.run();
                 return;
 
@@ -49,9 +50,24 @@ public class Main {
 
                     if("l".equals(formatmode) || "z".equals(formatmode) || "r".equals(formatmode)) {
 
-
-
-
+                        SourceCharacterStreamReader sourceReader = new SourceCharacterStreamReader(
+                                new SimplePipe(
+                                        (Writeable) new SequenceWordsFilter(
+                                                new SimplePipe(
+                                                        (Writeable) new CreateLinesWithLenghtFilter(
+                                                                new SimplePipe(
+                                                                        (Writeable) new AlignmentFilter(
+                                                                                new DoubleExitPushPipe(
+                                                                                        (Writeable) new SinkLineWriter(),
+                                                                                        (Writeable) new SequenceWordsFilter(
+                                                                                                new SimplePipe(
+                                                                                                        (Writeable) new CircularShiftFilter(
+                                                                                                                new SimplePipe(
+                                                                                                                        (Writeable) new FrequentWordFilter(
+                                                                                                                                new SimplePipe(
+                                                                                                                                        (Writeable) new SortAlphabeticalFilter(
+                                                                                                                                                new SimplePipe(
+                                                                                                                                                        new SinkSequenceWriter()))))))))), characterlength, formatmode)), characterlength)))));
                         return;
                     }
                 } catch(Exception e){

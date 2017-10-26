@@ -7,9 +7,11 @@ import javax.sound.sampled.Line;
 import java.io.*;
 import java.util.ArrayList;
 
-public class SinkWriter extends Sink<ArrayList<Sequence>> implements Writeable<ArrayList<Sequence>> {
+public class SinkSequenceWriter extends Sink<ArrayList<Sequence>> implements Writeable<ArrayList<Sequence>> {
 
-    public SinkWriter() {
+    public static final String OUTPUTFILE = "Outputfiles\\textWithIndex.txt";
+
+    public SinkSequenceWriter() {
         super();
     }
 
@@ -20,7 +22,7 @@ public class SinkWriter extends Sink<ArrayList<Sequence>> implements Writeable<A
         try {
             sinkWriter = new BufferedWriter(
                     new OutputStreamWriter(
-                    new FileOutputStream("Outputfiles\\filteredIndex.txt"), "utf-8"));
+                    new FileOutputStream(OUTPUTFILE), "utf-8"));
 
             for(Sequence sequence : sequences) {
                 for(String word : sequence.getSequenceWords()) {
