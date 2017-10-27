@@ -24,7 +24,7 @@ public class WordConstructingFilter extends AbstractFilter<ArrayList<Character>,
         String word = "";
 
         for(Character c : charactersInputStream) {
-            if(Character.isDefined(c) && c != ' ') {
+            if(Character.isDefined(c) && c != ' ' && c != '\n' && c != '\r') {
                 word += String.valueOf(c);
             } else if(!"".equals(word)){
                 words.add(word.toString());
