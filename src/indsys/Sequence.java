@@ -23,17 +23,13 @@ public class Sequence {
             if (c != ' ' && c != '\uFEFF') {
                 word += c;
             } else {
-                word = word.replaceAll(" ", "");
-                word = word.replaceAll("[^A-Za-z]+", "");
-                if(!word.equals("") && !word.equals(" ")) {
+                if(!word.equals("")) {
                     sequenceWords.add(word);
                 }
                 word = "";
             }
         }
-        word = word.replaceAll(" ", "");
-        word = word.replaceAll("[^A-Za-z]+", "");
-        if(!word.equals("") && !word.equals(" ")) {
+        if(!word.equals("")) {
             sequenceWords.add(word);
         }
     }
@@ -54,10 +50,11 @@ public class Sequence {
         this.sequenceWords = sequenceWords;
     }
 
-    public Sequence shift() {
+    public Sequence shiftForBookIndex() {
         LinkedList<String> shiftedLine = new LinkedList<String>(sequenceWords);
+
         String firstWord = shiftedLine.removeFirst();
-        shiftedLine.addLast((firstWord));
+        shiftedLine.addLast(firstWord);
         return new Sequence(this.lineNumber, shiftedLine);
     }
 
@@ -74,5 +71,4 @@ public class Sequence {
         }
         return sb.toString();
     }
-
 }

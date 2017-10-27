@@ -11,7 +11,9 @@ import java.util.Iterator;
 public class FrequentWordFilter extends AbstractFilter<ArrayList<Sequence>, ArrayList<Sequence>> {
 
     public static final String INPUTFILE = "Inputfiles\\frequentEnglishWords.txt";
-    private ArrayList<String> frequentWords = new ArrayList<String>();
+    public static final int FREQUENT_WORDS_LINENUMBER = 60;
+
+    private ArrayList<String> frequentWordsInLowerCase = new ArrayList<String>();
 
     public FrequentWordFilter(Writeable<ArrayList<Sequence>> output) throws InvalidParameterException {
         super(output);
@@ -31,7 +33,7 @@ public class FrequentWordFilter extends AbstractFilter<ArrayList<Sequence>, Arra
             bufferedReader = new BufferedReader(new FileReader(inputfile));
             String line = null;
             int i = 0;
-            while ((line = bufferedReader.readLine()) != null && i < 60) {
+            while ((line = bufferedReader.readLine()) != null && i < FREQUENT_WORDS_LINENUMBER) {
                 allLines.add(line);
                 i++;
             }
@@ -46,16 +48,15 @@ public class FrequentWordFilter extends AbstractFilter<ArrayList<Sequence>, Arra
         }
 
         filterFrequentWords(allLines);
-
     }
 
     private void filterFrequentWords(ArrayList<String> allLines) {
         ArrayList<String> freqWords = new ArrayList<>();
         for(String line : allLines) {
             String[] split = line.split("\t");
-            freqWords.add(split[1]);
+            freqWords.add(split[1].toLowerCase());
         }
-        this.frequentWords = freqWords;
+        this.frequentWordsInLowerCase = freqWords;
     }
 
     @Override
@@ -68,7 +69,7 @@ public class FrequentWordFilter extends AbstractFilter<ArrayList<Sequence>, Arra
         Iterator<Sequence> iter = sequences.iterator();
         while (iter.hasNext()) {
             String word = iter.next().getSequenceWords().getFirst();
-            if(frequentWords.contains(word)) {
+            if(frequentWordsInLowerCase.contains(word.toLowerCase())) {
                 iter.remove();
             }
         }
