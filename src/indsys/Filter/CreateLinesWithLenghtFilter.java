@@ -25,14 +25,16 @@ public class CreateLinesWithLenghtFilter extends AbstractFilter<ArrayList<String
     public void write(ArrayList<String> words) throws StreamCorruptedException {
         ArrayList<String> lines = new ArrayList<String>();
 
-        int actualLengthCounter = 0;
+        int actualLengthCouner = lineLenghtInCharacters;
         String actualLine = "";
         for(String word : words) {
-            if(actualLengthCounter - word.length() > 0) {
+            if(actualLengthCouner - word.length() > 0) {
                 actualLine += word + " ";
+                actualLengthCouner -= word.length() + 1;
             } else {
                 lines.add(actualLine);
                 actualLine = "";
+                actualLengthCouner = lineLenghtInCharacters;
             }
         }
         writeOutput(lines);

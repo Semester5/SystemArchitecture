@@ -5,14 +5,15 @@ import pmp.interfaces.Writeable;
 
 import java.io.StreamCorruptedException;
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 
-public class DoubleExitPushPipe<T> implements Writeable<T> {
+public class DoubleExitPushPipe<T> implements Writeable<ArrayList<String>> {
 
-    private Writeable<T> m_Output1 = null;
-    private Writeable<T> m_Output2 = null;
+    private Writeable<ArrayList<String>> m_Output1 = null;
+    private Writeable<ArrayList<String>> m_Output2 = null;
 
 
-    public DoubleExitPushPipe(Writeable<T> output1, Writeable<T> output2)   {
+    public DoubleExitPushPipe(Writeable<ArrayList<String>> output1, Writeable<ArrayList<String>> output2)   {
         if (output1 == null){
             throw new InvalidParameterException("output1 filter can't be null!");
         }
@@ -24,7 +25,7 @@ public class DoubleExitPushPipe<T> implements Writeable<T> {
     }
 
     @Override
-    public void write(T value) throws StreamCorruptedException {
+    public void write(ArrayList<String> value) throws StreamCorruptedException {
         if ( m_Output1 == null )
             throw new InvalidParameterException("output filter can't be null!");
 

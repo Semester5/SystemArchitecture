@@ -30,11 +30,10 @@ public class SourceCharacterStreamReader extends Source<ArrayList<Character>> {
         ArrayList<Character> allCharactersOfSource = new ArrayList<Character>();
         BufferedReader bufferedReader = null;
         try {
-            bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), Charset.forName("UTF-8")));
+            bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
             int c = 0;
             while((c = bufferedReader.read()) != -1) {
-                char character = (char) c;
-                allCharactersOfSource.add(character);
+                allCharactersOfSource.add((char) c);
             }
 
             ENDING_SIGNAL = 1;

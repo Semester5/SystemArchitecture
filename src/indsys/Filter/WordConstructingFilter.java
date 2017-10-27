@@ -24,10 +24,10 @@ public class WordConstructingFilter extends AbstractFilter<ArrayList<Character>,
         String word = "";
 
         for(Character c : charactersInputStream) {
-            if(c != ' ') {
-                word += c;
+            if(Character.isDefined(c) && c != ' ') {
+                word += String.valueOf(c);
             } else if(!"".equals(word)){
-                words.add(word);
+                words.add(word.toString());
                 word = "";
             }
         }
