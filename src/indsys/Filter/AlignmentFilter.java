@@ -1,4 +1,4 @@
-package indsys;
+package indsys.Filter;
 
 import indsys.Enum.Alignment;
 import pmp.filter.AbstractFilter;

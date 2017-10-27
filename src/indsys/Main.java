@@ -1,5 +1,10 @@
 package indsys;
 
+import indsys.Filter.*;
+import indsys.Sink.SinkLineWriter;
+import indsys.Sink.SinkSequenceWriter;
+import indsys.Source.SourceCharacterStreamReader;
+import indsys.Source.SourceLineStreamReader;
 import pmp.interfaces.Writeable;
 import pmp.pipes.DoubleExitPushPipe;
 import pmp.pipes.SimplePipe;

@@ -1,4 +1,4 @@
-package indsys;
+package indsys.Models;
 import java.util.LinkedList;
 
 public class Sequence {

@@ -1,4 +1,4 @@
-package indsys;
+package indsys.Filter;
 
 import pmp.filter.AbstractFilter;
 import pmp.interfaces.Writeable;

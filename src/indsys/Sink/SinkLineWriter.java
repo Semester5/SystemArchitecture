@@ -1,4 +1,4 @@
-package indsys;
+package indsys.Sink;
 
 import pmp.filter.Sink;
 import pmp.interfaces.Writeable;

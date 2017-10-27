@@ -1,5 +1,6 @@
-package indsys;
+package indsys.Filter;
 
+import indsys.Models.Sequence;
 import pmp.filter.AbstractFilter;
 import pmp.interfaces.Writeable;
 

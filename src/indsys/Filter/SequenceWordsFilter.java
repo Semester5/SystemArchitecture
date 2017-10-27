@@ -1,12 +1,10 @@
-package indsys;
+package indsys.Filter;
 
+import indsys.Models.Sequence;
 import pmp.filter.AbstractFilter;
-import pmp.filter.Source;
 import pmp.interfaces.Writeable;
-import pmp.pipes.SimplePipe;
 
 import java.io.StreamCorruptedException;
-import java.lang.reflect.Array;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 

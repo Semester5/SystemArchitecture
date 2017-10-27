@@ -1,9 +1,9 @@
-package indsys;
+package indsys.Sink;
 
+import indsys.Models.Sequence;
 import pmp.filter.Sink;
 import pmp.interfaces.Writeable;
 
-import javax.sound.sampled.Line;
 import java.io.*;
 import java.util.ArrayList;
 
