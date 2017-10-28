@@ -28,13 +28,23 @@ public class CreateLinesWithLenghtFilter extends AbstractFilter<ArrayList<String
         int actualLengthCouner = lineLenghtInCharacters;
         String actualLine = "";
         for(String word : words) {
-            if(actualLengthCouner - word.length() > 0) {
+            if(word.length() > lineLenghtInCharacters) {
+                if(actualLine != "") {
+                    lines.add(actualLine);
+                }
+                actualLine = word.substring(0, lineLenghtInCharacters);
+                lines.add(actualLine);
+                actualLine = word.substring(lineLenghtInCharacters, word.length());
+                lines.add(actualLine);
+                actualLengthCouner = lineLenghtInCharacters - actualLine.length() - 1;
+                actualLine = "";
+            } else if(actualLengthCouner - word.length() > 0) {
                 actualLine += word + " ";
                 actualLengthCouner -= word.length() + 1;
             } else {
                 lines.add(actualLine);
-                actualLine = "";
-                actualLengthCouner = lineLenghtInCharacters;
+                actualLine = word + " ";
+                actualLengthCouner = lineLenghtInCharacters - word.length() - 1;
             }
         }
         writeOutput(lines);

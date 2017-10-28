@@ -32,8 +32,9 @@ public class AlignmentFilter extends AbstractFilter<ArrayList<String>, ArrayList
 
     @Override
     public void write(ArrayList<String> lines) throws StreamCorruptedException {
-        for(String line : lines) {
 
+        ArrayList<String> linesWithAlignment = new ArrayList<String>();
+        for(String line : lines) {
             if(Alignment.C.equals(alignment)) {
                 int diff = (lineLenghtInCharacters - line.length()) / 2;
                 while(diff > 0) {
@@ -47,7 +48,8 @@ public class AlignmentFilter extends AbstractFilter<ArrayList<String>, ArrayList
                     diff--;
                 }
             }
+            linesWithAlignment.add((line));
         }
-        writeOutput(lines);
+        writeOutput(linesWithAlignment);
     }
 }

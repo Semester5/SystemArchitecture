@@ -28,7 +28,7 @@ public class SinkSequenceWriter extends Sink<ArrayList<Sequence>> implements Wri
                 for(String word : sequence.getSequenceWords()) {
                     sinkWriter.write(word + " ");
                 }
-                sinkWriter.write(sequence.getLineNumber() + System.lineSeparator());
+                sinkWriter.write("\t\t" + sequence.getLineNumber()  + System.lineSeparator());
             }
         } catch (IOException ex) {
             // report

@@ -52,7 +52,6 @@ public class Sequence {
 
     public Sequence shiftForBookIndex() {
         LinkedList<String> shiftedLine = new LinkedList<String>(sequenceWords);
-
         String firstWord = shiftedLine.removeFirst();
         shiftedLine.addLast(firstWord);
         return new Sequence(this.lineNumber, shiftedLine);
