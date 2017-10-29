@@ -29,6 +29,8 @@ public class CreateLinesWithLenghtFilter extends AbstractFilter<ArrayList<String
         String actualLine = "";
         for(String word : words) {
             if(word.length() > lineLenghtInCharacters) {
+                //Wort ist länger als die gewünschte Zeilenlänge:
+                //das Wort wird nach der gewünschten Zeilenlänge einfach getrennt, ohne Bindestrich o.ä.
                 if(actualLine != "") {
                     lines.add(actualLine);
                 }
